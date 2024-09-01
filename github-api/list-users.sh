@@ -54,6 +54,7 @@ function helper {
  echo "arg 1 : OWNER_NAME"
  echo "arg 2 : REPO_NAME"
  echo "Put these arguments like ./list-users.sh OWNER_NAME REPO_NAME"
+ fi
 }
 
 # Main script
