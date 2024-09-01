@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#######################
+# About: Script prints the names of members of a particular repository
+# Date: 2nd Sept 2024
+# Inputs: 
+#     export username="PUT_YOUR_USERNAME_HERE"
+#     export token="PUT_YOUR_GITHUB_TOKEN_HERE"
+# Owner: Ayush
+#######################
+
+helper()
+
 # GitHub API URL
 API_URL="https://api.github.com"
 
@@ -34,6 +45,15 @@ function list_users_with_read_access {
         echo "Users with read access to ${REPO_OWNER}/${REPO_NAME}:"
         echo "$collaborators"
     fi
+}
+
+function helper {
+ expected_cmd_args=2
+ if [ $# -ne expected_cmd_args]; then
+ echo "Please execute the script with required cmd args"
+ echo "arg 1 : OWNER_NAME"
+ echo "arg 2 : REPO_NAME"
+ echo "Put these arguments like ./list-users.sh OWNER_NAME REPO_NAME"
 }
 
 # Main script
