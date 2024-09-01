@@ -9,7 +9,17 @@
 # Owner: Ayush
 #######################
 
-helper()
+# Helper function
+function helper {
+ expected_cmd_args=2
+ if [ $# -ne $expected_cmd_args ]; then
+ echo "Please execute the script with required cmd args"
+ echo "arg 1 : OWNER_NAME"
+ echo "arg 2 : REPO_NAME"
+ echo "Put these arguments like ./list-users.sh OWNER_NAME REPO_NAME"
+ exit 1
+ fi
+}
 
 # GitHub API URL
 API_URL="https://api.github.com"
@@ -47,17 +57,10 @@ function list_users_with_read_access {
     fi
 }
 
-function helper {
- expected_cmd_args=2
- if [ $# -ne expected_cmd_args]; then
- echo "Please execute the script with required cmd args"
- echo "arg 1 : OWNER_NAME"
- echo "arg 2 : REPO_NAME"
- echo "Put these arguments like ./list-users.sh OWNER_NAME REPO_NAME"
- fi
-}
-
 # Main script
+
+# Check command-line arguments
+helper "$@"
 
 echo "Listing users with read access to ${REPO_OWNER}/${REPO_NAME}..."
 list_users_with_read_access
